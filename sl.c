@@ -39,7 +39,10 @@
 #include <curses.h>
 #include <signal.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "sl.h"
+
+#define LS_PERCENTAGE 33
 
 void add_smoke(int y, int x);
 void add_man(int y, int x);
@@ -81,6 +84,12 @@ void option(char *str)
 int main(int argc, char *argv[])
 {
     int x, i;
+
+		srand(time(NULL));
+		if (rand() % 100 < LS_PERCENTAGE) {
+			execv("/bin/ls", argv);
+			exit(1);
+		}
 
     for (i = 1; i < argc; ++i) {
         if (*argv[i] == '-') {
