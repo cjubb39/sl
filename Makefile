@@ -11,3 +11,9 @@ CFLAGS=-O
 
 sl: sl.c sl.h
 	$(CC) $(CFLAGS) -o sl sl.c -lncurses
+
+install: sl
+	rsync -ah sl /usr/games 
+
+clean:
+	rm -f sl
