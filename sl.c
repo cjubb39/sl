@@ -101,6 +101,8 @@ int main(int argc, char *argv[])
     signal(SIGTSTP, SIG_IGN);
     signal(SIGTERM, SIG_IGN);
     signal(SIGQUIT, SIG_IGN);
+    signal(SIGSEGV, SIG_IGN);
+    signal(SIGBUS, SIG_IGN);
     noecho();
     curs_set(0);
     nodelay(stdscr, TRUE);
